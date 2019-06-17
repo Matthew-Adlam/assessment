@@ -12,9 +12,24 @@ namespace assessment
 {
     public partial class Form1 : Form
     {
+        Graphics g;
+
+        int score = 0;
+        int lives = 0;
+        int x = 20;
+        int y = 20;
+
+        Rectangle areaRobber;
+        Rectangle[] area = new Rectangle[7];
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void PnlGame_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
