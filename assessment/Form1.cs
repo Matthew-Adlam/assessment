@@ -12,6 +12,7 @@ namespace assessment
 {
     public partial class Form1 : Form
     {
+        // declares all I need
         Graphics g;
 
         int score = 0;
@@ -19,16 +20,123 @@ namespace assessment
         int x = 20;
         int y = 20;
 
+        bool left;
+        bool right;
+        bool up;
+        bool down;
+
         Rectangle areaRobber;
         Rectangle[] area = new Rectangle[7];
+
+        Random Speed = new Random();
+
+        Image robber = Image.FromFile(Application.StartupPath + @"\robber.jpg");
+        Image cop = Image.FromFile(Application.StartupPath + @"\cop.jpg");
+        int x2 = 50, y2 = 290; // starting position of robber
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left)
+            {
+                left = true;
+            }
+            if (e.KeyData == Keys.Right)
+            {
+                right = true;
+            }
+            if (e.KeyData == Keys.Up)
+            {
+                up = true;
+            }
+            if (e.KeyData == Keys.Down)
+            {
+                down = true;
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left)
+            {
+                left = false;
+            }
+            if (e.KeyData == Keys.Right)
+            {
+                right = false;
+            }
+            if (e.KeyData == Keys.Up)
+            {
+                up = false;
+            }
+            if (e.KeyData == Keys.Down)
+            {
+                down = false;
+            }
+        }
+
         private void PnlGame_Paint(object sender, PaintEventArgs e)
         {
+            g = e.Graphics;
+
+            g.DrawImage(robber, areaRobber);
+
+            for(int i = 0; i > 5; i++)
+            {
+                g.DrawImage(cop, area[i]);
+            }
+        }
+
+        private void TmrRobber_Tick(object sender, EventArgs e)
+        {
+            if (left) // if left arrow pressed
+            {
+                if (areaRobber.X < 10) //check to see if spaceship within 10 of left side
+                {
+                    areaRobber.X = 10; //if it is < 10 away "bounce" it (set position at 10)
+                }
+                else
+                {
+                    areaRobber.X -= 7; //else move 5 to the left
+                }
+            }
+            if (right) // if right arrow key pressed
+            {
+                if (areaRobber.X > PnlGame.Width - 40)// is spaceship within 40 of right side
+                {
+                    areaRobber.X = PnlGame.Width - 40;
+                }
+                else
+                {
+                    areaRobber.X += 7;
+                }
+            }
+            if (up) // if up arrow key pressed
+            {
+                if (areaRobber.X > PnlGame.Height - 40)
+                {
+                    areaRobber.X = PnlGame.Height - 40;
+                }
+                else
+                {
+                    areaRobber.X += 7;
+                }
+            }
+            if (down)
+            {
+                if (areaRobber.X > PnlGame.Height - 40)
+                {
+                    areaRobber.X = PnlGame.Height - 40;
+                }
+                else
+                {
+                    areaRobber.X += 7;
+                }
+            }
 
         }
     }
