@@ -26,17 +26,25 @@ namespace assessment
         bool down;
 
         Rectangle areaRobber;
-        Rectangle[] area = new Rectangle[7];
+        Rectangle[] area = new Rectangle[6];
+
+        int[] planetSpeed = new int[6];
 
         Random Speed = new Random();
 
-        Image robber = Image.FromFile(Application.StartupPath + @"\robber.jpg");
-        Image cop = Image.FromFile(Application.StartupPath + @"\cop.jpg");
+        Image robber = Image.FromFile(Application.StartupPath + @"\robber.png");
+        Image cop = Image.FromFile(Application.StartupPath + @"\police.png");
         int x2 = 50, y2 = 290; // starting position of robber
 
         public Form1()
         {
             InitializeComponent();
+            areaRobber = new Rectangle(x2, y2, 75, 75);
+            for (int i = 0; i < 6; i++)
+            {
+                area[i] = new Rectangle(y + 70 * i, x, 40, 40);
+                planetSpeed[i] = Speed.Next(5, 10);
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -128,9 +136,9 @@ namespace assessment
             }
             if (down)
             {
-                if (areaRobber.X > PnlGame.Height - 40)
+                if (areaRobber.X > PnlGame.Height - 430)
                 {
-                    areaRobber.X = PnlGame.Height - 40;
+                    areaRobber.X = PnlGame.Height - 430;
                 }
                 else
                 {
