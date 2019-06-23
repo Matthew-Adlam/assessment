@@ -111,39 +111,45 @@ namespace assessment
                 {
                     areaRobber.X -= 7; //else move 5 to the left
                 }
+                PnlGame.Invalidate();
             }
             if (right) // if right arrow key pressed
             {
-                if (areaRobber.X > PnlGame.Width - 40)// is spaceship within 40 of right side
+                if (areaRobber.X > PnlGame.Width - 80)// is spaceship within 40 of right side
                 {
-                    areaRobber.X = PnlGame.Width - 40;
+                    areaRobber.X = PnlGame.Width - 80;
                 }
                 else
                 {
                     areaRobber.X += 7;
                 }
+                PnlGame.Invalidate();
             }
-            if (up) // if up arrow key pressed
+   
+            if (up) 
             {
-                if (areaRobber.X > PnlGame.Height - 40)
+                if (areaRobber.Y < PnlGame.Height - 430)
                 {
-                    areaRobber.X = PnlGame.Height - 40;
+                    areaRobber.Y = PnlGame.Height - 430;
                 }
                 else
                 {
-                    areaRobber.X += 7;
+                    areaRobber.Y -= 7;
                 }
+                PnlGame.Invalidate();
             }
+         
             if (down)
             {
-                if (areaRobber.X > PnlGame.Height - 430)
+                if (areaRobber.Y > PnlGame.Height - 80)
                 {
-                    areaRobber.X = PnlGame.Height - 430;
+                    areaRobber.Y = PnlGame.Height - 80;
                 }
                 else
                 {
-                    areaRobber.X += 7;
+                    areaRobber.Y += 7;
                 }
+                PnlGame.Invalidate();
             }
 
         }

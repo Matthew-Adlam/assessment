@@ -46,6 +46,7 @@
             // TmrRobber
             // 
             this.TmrRobber.Enabled = true;
+            this.TmrRobber.Interval = 50;
             this.TmrRobber.Tick += new System.EventHandler(this.TmrRobber_Tick);
             // 
             // TmrCop
@@ -59,6 +60,7 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.PnlGame);
+            this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
