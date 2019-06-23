@@ -14,7 +14,7 @@ namespace assessment
     {
         // declares all I need
         Graphics g;
-        // hi
+       
         int score = 0;
         int lives = 0;
         int x = 20;
@@ -28,7 +28,7 @@ namespace assessment
         Rectangle areaRobber;
         Rectangle[] area = new Rectangle[6];
 
-        int[] planetSpeed = new int[6];
+        int[] copSpeed = new int[6];
 
         Random Speed = new Random();
 
@@ -43,7 +43,7 @@ namespace assessment
             for (int i = 0; i < 6; i++)
             {
                 area[i] = new Rectangle(y + 70 * i, x, 40, 40);
-                planetSpeed[i] = Speed.Next(5, 10);
+                copSpeed[i] = Speed.Next(5, 10);
             }
         }
 
