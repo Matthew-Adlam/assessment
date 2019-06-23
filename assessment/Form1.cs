@@ -14,7 +14,7 @@ namespace assessment
     {
         // declares all I need
         Graphics g;
-
+        // hi
         int score = 0;
         int lives = 0;
         int x = 20;
