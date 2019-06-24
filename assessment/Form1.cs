@@ -28,9 +28,9 @@ namespace assessment
         Rectangle areaRobber;
         Rectangle[] area = new Rectangle[6];
 
-        int[] copSpeed = new int[6];
+        int[] copSpeed = new int[5];
 
-        Random Speed = new Random();
+        Random speed = new Random();
 
         Image robber = Image.FromFile(Application.StartupPath + @"\robber.png");
         Image cop = Image.FromFile(Application.StartupPath + @"\police.png");
@@ -40,10 +40,10 @@ namespace assessment
         {
             InitializeComponent();
             areaRobber = new Rectangle(x2, y2, 75, 75);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
-                area[i] = new Rectangle(y + 70 * i, x, 40, 40);
-                copSpeed[i] = Speed.Next(5, 10);
+                area[i] = new Rectangle(x, y + 70 * i, 40, 40);
+                copSpeed[i] = speed.Next(5, 10);
             }
         }
 
@@ -93,11 +93,60 @@ namespace assessment
 
             g.DrawImage(robber, areaRobber);
 
-            for(int i = 0; i > 5; i++)
+            for(int i = 0; i <= 4; i++)
             {
                 g.DrawImage(cop, area[i]);
             }
         }
+
+        private void TmrCop_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= 4; i++)
+            {
+                area[i].X += copSpeed[i];
+                if (area[i].IntersectsWith(areaRobber))
+                {
+                    area[i].X = 20;
+                    lives -= 1; // reduce lives by 1
+                  //  LblLives.Text = lives.ToString();
+
+                //    CheckLives();
+                }
+                if (score > 20)
+                {
+                    copSpeed[i] = speed.Next(10, 20);
+                }
+                if (score > 50)
+                {
+                    copSpeed[i] = speed.Next(20, 25);
+                }
+                if (score > 100)
+                {
+                    copSpeed[i] = speed.Next(25, 40);
+                }
+                if (score > 200)
+                {
+                    copSpeed[i] = speed.Next(40, 50);
+                }
+                if (score > 500)
+                {
+                    copSpeed[i] = speed.Next(50, 80);
+                }
+                if (score > 1000)
+                {
+                    copSpeed[i] = speed.Next(80, 100);
+                }
+
+                if (area[i].X > PnlGame.Width)
+                {
+                    area[i].X = 20;
+                    score += 1; // add 1 to score
+               //     LblScore.Text = score.ToString();//display score on the form 
+                }
+            }
+            PnlGame.Invalidate();
+        }
+    
 
         private void TmrRobber_Tick(object sender, EventArgs e)
         {

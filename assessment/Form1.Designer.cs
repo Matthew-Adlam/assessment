@@ -52,6 +52,7 @@
             // TmrCop
             // 
             this.TmrCop.Enabled = true;
+            this.TmrCop.Tick += new System.EventHandler(this.TmrCop_Tick);
             // 
             // Form1
             // 
