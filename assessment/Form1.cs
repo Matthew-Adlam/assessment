@@ -19,6 +19,7 @@ namespace assessment
         int lives = 0;
         int x = 20;
         int y = 20;
+        int difficulty = 1; // 1 easy, 2 medium, 3 hard
 
         bool left;
         bool right;
@@ -28,23 +29,25 @@ namespace assessment
         Rectangle areaRobber;
         Rectangle[] area = new Rectangle[6];
 
-        int[] copSpeed = new int[5];
+        int[] copSpeed = new int[6];
 
         Random speed = new Random();
 
         Image robber = Image.FromFile(Application.StartupPath + @"\robber.png");
         Image cop = Image.FromFile(Application.StartupPath + @"\police.png");
-        int x2 = 50, y2 = 290; // starting position of robber
+        int x2 = 350, y2 = 290; // starting position of robber
 
         public Form1()
         {
             InitializeComponent();
             areaRobber = new Rectangle(x2, y2, 75, 75);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 area[i] = new Rectangle(x, y + 70 * i, 40, 40);
-                copSpeed[i] = speed.Next(5, 10);
+                copSpeed[i] = speed.Next(3, 12);
             }
+            TmrRobber.Enabled = false;
+            TmrCop.Enabled = false;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -93,7 +96,7 @@ namespace assessment
 
             g.DrawImage(robber, areaRobber);
 
-            for(int i = 0; i <= 4; i++)
+            for(int i = 0; i <= 5; i++)
             {
                 g.DrawImage(cop, area[i]);
             }
@@ -101,7 +104,7 @@ namespace assessment
 
         private void TmrCop_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 5; i++)
             {
                 area[i].X += copSpeed[i];
                 if (area[i].IntersectsWith(areaRobber))
@@ -146,7 +149,27 @@ namespace assessment
             }
             PnlGame.Invalidate();
         }
-    
+
+        private void Instructions_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Click start to start. Before you do, redeem a code with the redeemer or change your game settings in the Settings menu.");
+            MessageBox.Show("Use the arrow keys to move the robber, avoiding the cops. Hit one and you lose a life.");
+            MessageBox.Show("If a robber gets to the right of the screen, you gain a point, but try not to lose all your lives!");
+        }
+
+        private void Start_Click(object sender, EventArgs e)
+        {
+            StartGame();
+        }
+
+        void StartGame()
+        {
+            TmrCop.Enabled = true;
+            TmrRobber.Enabled = true;
+
+            score = 0;
+            lives = difficulty;
+        }
 
         private void TmrRobber_Tick(object sender, EventArgs e)
         {
