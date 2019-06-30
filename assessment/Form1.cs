@@ -19,7 +19,8 @@ namespace assessment
         int lives = 0;
         int x = 20;
         int y = 20;
-        int difficulty = 1; // 1 easy, 2 medium, 3 hard
+        int difficulty = 3; // 3 easy, 2 medium, 1 hard
+        int loadingInt;
 
         bool left;
         bool right;
@@ -32,6 +33,7 @@ namespace assessment
         int[] copSpeed = new int[6];
 
         Random speed = new Random();
+        Random loadingScreen = new Random();
 
         Image robber = Image.FromFile(Application.StartupPath + @"\robber.png");
         Image cop = Image.FromFile(Application.StartupPath + @"\police.png");
@@ -48,6 +50,9 @@ namespace assessment
             }
             TmrRobber.Enabled = false;
             TmrCop.Enabled = false;
+            easy.Visible = false;
+            medium.Visible = false;
+            hard.Visible = false;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -167,8 +172,48 @@ namespace assessment
             TmrCop.Enabled = true;
             TmrRobber.Enabled = true;
 
+            Start.Enabled = false;
+            Instructions.Enabled = false;
+            textBox1.Enabled = false;
+
             score = 0;
             lives = difficulty;
+        }
+
+        private void settings_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Please select a difficulty.");
+            easy.Visible = true;
+            medium.Visible = true;
+            hard.Visible = true;
+
+        }
+
+        private void easy_Click(object sender, EventArgs e)
+        {
+            difficulty = 3;
+            MessageBox.Show("Difficulty set to Easy.");
+            easy.Visible = false;
+            medium.Visible = false;
+            hard.Visible = false;
+        }
+
+        private void medium_Click(object sender, EventArgs e)
+        {
+            difficulty = 2;
+            MessageBox.Show("Difficulty set to Medium.");
+            easy.Visible = false;
+            medium.Visible = false;
+            hard.Visible = false;
+        }
+
+        private void hard_Click(object sender, EventArgs e)
+        {
+            difficulty = 1;
+            MessageBox.Show("Difficulty set to Hard.");
+            easy.Visible = false;
+            medium.Visible = false;
+            hard.Visible = false;
         }
 
         private void TmrRobber_Tick(object sender, EventArgs e)
