@@ -21,6 +21,10 @@ namespace assessment
         int y = 20;
         int difficulty = 3; // 3 easy, 2 medium, 1 hard
         int loadingInt;
+        int livesSetBack;
+        int scoreSetBack;
+        int livesBoost;
+        int scoreBoost;
 
         bool left;
         bool right;
@@ -46,7 +50,7 @@ namespace assessment
             for (int i = 0; i < 6; i++)
             {
                 area[i] = new Rectangle(x, y + 70 * i, 40, 40);
-                copSpeed[i] = speed.Next(3, 12);
+                copSpeed[i] = speed.Next(1, 15);
             }
             TmrRobber.Enabled = false;
             TmrCop.Enabled = false;
@@ -116,9 +120,9 @@ namespace assessment
                 {
                     area[i].X = 20;
                     lives -= 1; // reduce lives by 1
-                  //  LblLives.Text = lives.ToString();
+                    labelLives.Text = lives.ToString();
 
-                //    CheckLives();
+                    CheckLives();
                 }
                 if (score > 20)
                 {
@@ -149,7 +153,7 @@ namespace assessment
                 {
                     area[i].X = 20;
                     score += 1; // add 1 to score
-               //     LblScore.Text = score.ToString();//display score on the form 
+                 labelScore.Text = score.ToString();//display score on the form 
                 }
             }
             PnlGame.Invalidate();
@@ -157,7 +161,7 @@ namespace assessment
 
         private void Instructions_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Click start to start. Before you do, redeem a code with the redeemer or change your game settings in the Settings menu.");
+            MessageBox.Show("Click start to start. Before you do, redeem a code with the redeemer or change your game settings in the Settings menu, and enter a username.");
             MessageBox.Show("Use the arrow keys to move the robber, avoiding the cops. Hit one and you lose a life.");
             MessageBox.Show("If a robber gets to the right of the screen, you gain a point, but try not to lose all your lives!");
         }
@@ -167,6 +171,17 @@ namespace assessment
             StartGame();
         }
 
+        void CheckLives()
+        {
+            if(lives == 0)
+            {
+                TmrCop.Enabled = false;
+                TmrRobber.Enabled = false;
+                MessageBox.Show("Game Over, your score was" + score + "!");
+                
+            }
+        }
+
         void StartGame()
         {
             TmrCop.Enabled = true;
@@ -174,10 +189,14 @@ namespace assessment
 
             Start.Enabled = false;
             Instructions.Enabled = false;
-            textBox1.Enabled = false;
+            textName.Enabled = false;
+            redeemCode.Enabled = false;
+            redeemButton.Enabled = false;
 
-            score = 0;
-            lives = difficulty;
+            score = score + scoreBoost - scoreSetBack;
+            lives = difficulty + livesBoost - livesSetBack;
+
+            CheckLives();
         }
 
         private void settings_Click(object sender, EventArgs e)
@@ -216,6 +235,49 @@ namespace assessment
             hard.Visible = false;
         }
 
+        private void textName_TextChanged(object sender, EventArgs e)
+        {
+
+            string context = textName.Text;
+            bool isletter = true;
+            //for loop checks for letters as characters are entered
+            for (int i = 0; i < context.Length; i++)
+            {
+                if (!char.IsLetter(context[i]))// if current character not a letter
+                {
+                    isletter = false;//make isletter false
+                    break; // exit the for loop
+                }
+
+            }
+
+            // if not a letter clear the textbox and focus on it
+            // to enter name again
+            if (isletter == false)
+            {
+                textName.Clear();
+                textName.Focus();
+                MessageBox.Show("Please enter a valid username - one with only letters");
+            }
+            else
+            {
+                Start.Enabled = true;
+                Instructions.Enabled = true;
+                redeemCode.Enabled = true;
+                redeemButton.Enabled = true;
+            }
+
+        }
+
+        private void redeemButton_Click(object sender, EventArgs e)
+        {
+            if (redeemCode.Text == "Bomb Tower")
+            {
+                MessageBox.Show("Say No To Bomb Tower");
+                livesSetBack = 4;
+            }
+        }
+
         private void TmrRobber_Tick(object sender, EventArgs e)
         {
             if (left) // if left arrow pressed
@@ -226,7 +288,7 @@ namespace assessment
                 }
                 else
                 {
-                    areaRobber.X -= 7; //else move 5 to the left
+                    areaRobber.X -= 7; 
                 }
                 PnlGame.Invalidate();
             }
