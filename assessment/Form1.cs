@@ -294,7 +294,7 @@ namespace assessment
             }
             else if(redeemCode.Text == "Matthew Is a God" || redeemCode.Text == "Matthew is a god" || redeemCode.Text == "MATTHEW IS A GOD" || redeemCode.Text == "matthew is a god")
             {
-                MessageBox.Show("You Legend! Have a free 100 points!")
+                MessageBox.Show("You Legend! Have a free 100 points!");
                 scoreBoost = 100;                
             }
         }
