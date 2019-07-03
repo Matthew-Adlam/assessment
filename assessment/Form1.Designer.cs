@@ -47,6 +47,8 @@
             this.redeem = new System.Windows.Forms.Label();
             this.redeemCode = new System.Windows.Forms.TextBox();
             this.redeemButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.highScoreLbl = new System.Windows.Forms.Label();
             this.PnlGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.settings)).BeginInit();
             this.SuspendLayout();
@@ -122,7 +124,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(345, 13);
+            this.label1.Location = new System.Drawing.Point(279, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 2;
@@ -173,7 +175,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(474, 13);
+            this.label3.Location = new System.Drawing.Point(517, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 20);
             this.label3.TabIndex = 8;
@@ -183,7 +185,7 @@
             // 
             this.labelScore.AutoSize = true;
             this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelScore.Location = new System.Drawing.Point(366, 54);
+            this.labelScore.Location = new System.Drawing.Point(304, 54);
             this.labelScore.Name = "labelScore";
             this.labelScore.Size = new System.Drawing.Size(16, 18);
             this.labelScore.TabIndex = 3;
@@ -193,7 +195,7 @@
             // 
             this.labelLives.AutoSize = true;
             this.labelLives.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLives.Location = new System.Drawing.Point(489, 54);
+            this.labelLives.Location = new System.Drawing.Point(530, 56);
             this.labelLives.Name = "labelLives";
             this.labelLives.Size = new System.Drawing.Size(16, 18);
             this.labelLives.TabIndex = 9;
@@ -227,12 +229,34 @@
             this.redeemButton.UseVisualStyleBackColor = true;
             this.redeemButton.Click += new System.EventHandler(this.redeemButton_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(382, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 20);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "High Score";
+            // 
+            // highScoreLbl
+            // 
+            this.highScoreLbl.AutoSize = true;
+            this.highScoreLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highScoreLbl.Location = new System.Drawing.Point(417, 53);
+            this.highScoreLbl.Name = "highScoreLbl";
+            this.highScoreLbl.Size = new System.Drawing.Size(16, 18);
+            this.highScoreLbl.TabIndex = 14;
+            this.highScoreLbl.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.highScoreLbl);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.redeemButton);
             this.Controls.Add(this.redeemCode);
             this.Controls.Add(this.redeem);
@@ -280,6 +304,8 @@
         private System.Windows.Forms.Label redeem;
         private System.Windows.Forms.TextBox redeemCode;
         private System.Windows.Forms.Button redeemButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label highScoreLbl;
     }
 }
 

@@ -17,6 +17,7 @@ namespace assessment
        
         int score = 0;
         int lives = 0;
+        int highScore = 0;
         int x = 20;
         int y = 20;
         int difficulty = 3; // 3 easy, 2 medium, 1 hard
@@ -30,6 +31,8 @@ namespace assessment
         bool right;
         bool up;
         bool down;
+
+        string name;
 
         Rectangle areaRobber;
         Rectangle[] area = new Rectangle[6];
@@ -122,15 +125,15 @@ namespace assessment
                     lives -= 1; // reduce lives by 1
                     labelLives.Text = lives.ToString();
 
-                    CheckLives();
+                    CheckLives(); //checks to see if the lives is 0
                 }
                 if (score > 20)
                 {
-                    copSpeed[i] = speed.Next(10, 20);
+                    copSpeed[i] = speed.Next(5, 20);
                 }
                 if (score > 50)
                 {
-                    copSpeed[i] = speed.Next(20, 25);
+                    copSpeed[i] = speed.Next(10, 35);
                 }
                 if (score > 100)
                 {
@@ -164,21 +167,30 @@ namespace assessment
             MessageBox.Show("Click start to start. Before you do, redeem a code with the redeemer or change your game settings in the Settings menu, and enter a username.");
             MessageBox.Show("Use the arrow keys to move the robber, avoiding the cops. Hit one and you lose a life.");
             MessageBox.Show("If a robber gets to the right of the screen, you gain a point, but try not to lose all your lives!");
+            MessageBox.Show("Cops have a large range, larger than their body. Try to avoid them!");
         }
 
         private void Start_Click(object sender, EventArgs e)
         {
             StartGame();
+            CheckLives();
         }
 
         void CheckLives()
         {
-            if(lives == 0)
+            if(lives == 0 || lives < 0)
             {
                 TmrCop.Enabled = false;
                 TmrRobber.Enabled = false;
-                MessageBox.Show("Game Over, your score was" + score + "!");
+                TmrRobber.Enabled = false;
+                MessageBox.Show("Game Over, your score was" + ""+ score + "" + "!");
                 
+                if(score > highScore)
+                {
+                    MessageBox.Show("Congratulations, you got a new high score of " + "" + score + "" + "!");
+                    highScore = score;
+                    highScoreLbl.Text = highScore.ToString();
+                }
             }
         }
 
@@ -195,6 +207,9 @@ namespace assessment
 
             score = score + scoreBoost - scoreSetBack;
             lives = difficulty + livesBoost - livesSetBack;
+
+            labelScore.Text = score.ToString();
+            labelLives.Text = lives.ToString();
 
             CheckLives();
         }
@@ -265,6 +280,7 @@ namespace assessment
                 Instructions.Enabled = true;
                 redeemCode.Enabled = true;
                 redeemButton.Enabled = true;
+                context = name;
             }
 
         }
@@ -275,6 +291,11 @@ namespace assessment
             {
                 MessageBox.Show("Say No To Bomb Tower");
                 livesSetBack = 4;
+            }
+            else if(redeemCode.Text == "Matthew Is a God" || redeemCode.Text == "Matthew is a god" || redeemCode.Text == "MATTHEW IS A GOD" || redeemCode.Text == "matthew is a god")
+            {
+                MessageBox.Show("You Legend! Have a free 100 points!")
+                scoreBoost = 100;                
             }
         }
 
