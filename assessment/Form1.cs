@@ -34,6 +34,10 @@ namespace assessment
 
         string name;
 
+        double idc;
+
+        float idk;
+
         Rectangle areaRobber;
         Rectangle[] area = new Rectangle[6];
 
@@ -167,7 +171,7 @@ namespace assessment
             MessageBox.Show("Click start to start. Before you do, redeem a code with the redeemer or change your game settings in the Settings menu, and enter a username.");
             MessageBox.Show("Use the arrow keys to move the robber, avoiding the cops. Hit one and you lose a life.");
             MessageBox.Show("If a robber gets to the right of the screen, you gain a point, but try not to lose all your lives!");
-            MessageBox.Show("Cops have a large range, larger than their body. Try to avoid them!");
+            MessageBox.Show("Cops have a large range, larger than their body, as they have hidden guns. Try to stay away from them!");
         }
 
         private void Start_Click(object sender, EventArgs e)
@@ -183,7 +187,7 @@ namespace assessment
                 TmrCop.Enabled = false;
                 TmrRobber.Enabled = false;
                 TmrRobber.Enabled = false;
-                MessageBox.Show("Game Over, your score was" + ""+ score + "" + "!");
+                MessageBox.Show("Game Over, your score was " + ""+ score + "" + "!");
                 
                 if(score > highScore)
                 {
@@ -199,13 +203,14 @@ namespace assessment
             TmrCop.Enabled = true;
             TmrRobber.Enabled = true;
 
+            //makes the arrow keys work
             Start.Enabled = false;
             Instructions.Enabled = false;
             textName.Enabled = false;
             redeemCode.Enabled = false;
             redeemButton.Enabled = false;
-
-            score = score + scoreBoost - scoreSetBack;
+            // for the code redeemer
+            score = 0 + scoreBoost - scoreSetBack;
             lives = difficulty + livesBoost - livesSetBack;
 
             labelScore.Text = score.ToString();
@@ -287,6 +292,7 @@ namespace assessment
 
         private void redeemButton_Click(object sender, EventArgs e)
         {
+            // codes check if it is entered correctly
             if (redeemCode.Text == "Bomb Tower")
             {
                 MessageBox.Show("Say No To Bomb Tower");
@@ -296,6 +302,11 @@ namespace assessment
             {
                 MessageBox.Show("You Legend! Have a free 100 points!");
                 scoreBoost = 100;                
+            }
+            else if(redeemCode.Text == "1234567890")
+            {
+                MessageBox.Show("Did you see my advert? Have a free 5 points!");
+                scoreBoost = 5;
             }
         }
 
