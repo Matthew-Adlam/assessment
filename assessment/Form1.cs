@@ -160,6 +160,7 @@ namespace assessment
                 {
                     area[i].X = 20;
                     score += 1; // add 1 to score
+                    CheckScore();
                  labelScore.Text = score.ToString();//display score on the form 
                 }
             }
@@ -198,6 +199,17 @@ namespace assessment
             }
         }
 
+        void CheckScore()
+        {
+            if(score == 70 || score > 70)
+            {
+                TmrCop.Enabled = false;
+                TmrRobber.Enabled = false;
+                TmrRobber.Enabled = false;
+                MessageBox.Show("Congratulations, you beat the game!" + "Next time, change the difficulty to harder!");
+            }
+        }
+
         void StartGame()
         {
             TmrCop.Enabled = true;
@@ -221,6 +233,19 @@ namespace assessment
 
         private void settings_Click(object sender, EventArgs e)
         {
+            PnlGame.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            label4.Visible = false;
+            labelScore.Visible = false;
+            labelLives.Visible = false;
+            redeemButton.Visible = false;
+            redeemCode.Visible = false;
+            Start.Visible = false;
+            Instructions.Visible = false;
+            textName.Visible = false;
+            highScoreLbl.Visible = false;
             MessageBox.Show("Please select a difficulty.");
             easy.Visible = true;
             medium.Visible = true;
