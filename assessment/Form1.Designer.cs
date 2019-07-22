@@ -49,6 +49,7 @@
             this.redeemButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.highScoreLbl = new System.Windows.Forms.Label();
+            this.back = new System.Windows.Forms.Button();
             this.PnlGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.settings)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +57,7 @@
             // PnlGame
             // 
             this.PnlGame.BackColor = System.Drawing.Color.White;
+            this.PnlGame.Controls.Add(this.back);
             this.PnlGame.Controls.Add(this.hard);
             this.PnlGame.Controls.Add(this.medium);
             this.PnlGame.Controls.Add(this.easy);
@@ -67,35 +69,38 @@
             // 
             // hard
             // 
+            this.hard.BackColor = System.Drawing.Color.Silver;
             this.hard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hard.Location = new System.Drawing.Point(238, 252);
             this.hard.Name = "hard";
             this.hard.Size = new System.Drawing.Size(183, 59);
             this.hard.TabIndex = 2;
             this.hard.Text = "Hard(1 life)";
-            this.hard.UseVisualStyleBackColor = true;
+            this.hard.UseVisualStyleBackColor = false;
             this.hard.Click += new System.EventHandler(this.hard_Click);
             // 
             // medium
             // 
+            this.medium.BackColor = System.Drawing.Color.Silver;
             this.medium.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.medium.Location = new System.Drawing.Point(238, 150);
             this.medium.Name = "medium";
             this.medium.Size = new System.Drawing.Size(183, 59);
             this.medium.TabIndex = 1;
             this.medium.Text = "Medium (2 lives)";
-            this.medium.UseVisualStyleBackColor = true;
+            this.medium.UseVisualStyleBackColor = false;
             this.medium.Click += new System.EventHandler(this.medium_Click);
             // 
             // easy
             // 
+            this.easy.BackColor = System.Drawing.Color.Silver;
             this.easy.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.easy.Location = new System.Drawing.Point(238, 45);
             this.easy.Name = "easy";
             this.easy.Size = new System.Drawing.Size(183, 59);
             this.easy.TabIndex = 0;
             this.easy.Text = "Easy ( 3 lives)";
-            this.easy.UseVisualStyleBackColor = true;
+            this.easy.UseVisualStyleBackColor = false;
             this.easy.Click += new System.EventHandler(this.easy_Click);
             // 
             // TmrRobber
@@ -249,6 +254,17 @@
             this.highScoreLbl.TabIndex = 14;
             this.highScoreLbl.Text = "0";
             // 
+            // back
+            // 
+            this.back.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.back.Location = new System.Drawing.Point(344, 409);
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(100, 38);
+            this.back.TabIndex = 15;
+            this.back.Text = "Back";
+            this.back.UseVisualStyleBackColor = true;
+            this.back.Click += new System.EventHandler(this.back_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +322,7 @@
         private System.Windows.Forms.Button redeemButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label highScoreLbl;
+        private System.Windows.Forms.Button back;
     }
 }
 

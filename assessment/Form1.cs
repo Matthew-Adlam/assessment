@@ -64,6 +64,7 @@ namespace assessment
             easy.Visible = false;
             medium.Visible = false;
             hard.Visible = false;
+            back.Visible = false;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -233,6 +234,10 @@ namespace assessment
 
         private void settings_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Please select a difficulty.");
+            easy.Visible = true;
+            medium.Visible = true;
+            hard.Visible = true;
             PnlGame.Visible = false;
             label1.Visible = false;
             label2.Visible = false;
@@ -246,11 +251,9 @@ namespace assessment
             Instructions.Visible = false;
             textName.Visible = false;
             highScoreLbl.Visible = false;
-            MessageBox.Show("Please select a difficulty.");
-            easy.Visible = true;
-            medium.Visible = true;
-            hard.Visible = true;
-
+            back.Visible = true;
+            settings.Visible = false;
+            redeem.Visible = false;
         }
 
         private void easy_Click(object sender, EventArgs e)
@@ -269,6 +272,7 @@ namespace assessment
             easy.Visible = false;
             medium.Visible = false;
             hard.Visible = false;
+
         }
 
         private void hard_Click(object sender, EventArgs e)
@@ -278,6 +282,7 @@ namespace assessment
             easy.Visible = false;
             medium.Visible = false;
             hard.Visible = false;
+
         }
 
         private void textName_TextChanged(object sender, EventArgs e)
@@ -333,6 +338,29 @@ namespace assessment
                 MessageBox.Show("Did you see my advert? Have a free 5 points!");
                 scoreBoost = 5;
             }
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            PnlGame.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            label4.Visible = true;
+            labelScore.Visible = true;
+            labelLives.Visible = true;
+            redeemButton.Visible = true;
+            redeemCode.Visible = true;
+            redeem.Visible = true;
+            Start.Visible = true;
+            Instructions.Visible = true;
+            textName.Visible = true;
+            highScoreLbl.Visible = true;
+            easy.Visible = false;
+            medium.Visible = false;
+            hard.Visible = false;
+            back.Visible = false;
+            settings.Visible = true;
         }
 
         private void TmrRobber_Tick(object sender, EventArgs e)
