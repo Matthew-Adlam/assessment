@@ -65,6 +65,7 @@ namespace assessment
             medium.Visible = false;
             hard.Visible = false;
             back.Visible = false;
+            label5.Visible = false;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -207,7 +208,7 @@ namespace assessment
                 TmrCop.Enabled = false;
                 TmrRobber.Enabled = false;
                 TmrRobber.Enabled = false;
-                MessageBox.Show("Congratulations, you beat the game!" + "Next time, change the difficulty to harder!");
+                MessageBox.Show("Congratulations, you beat the game!" + "Next time, change the difficulty to make it harder!");
             }
         }
 
@@ -228,13 +229,16 @@ namespace assessment
 
             labelScore.Text = score.ToString();
             labelLives.Text = lives.ToString();
-
+            
             CheckLives();
         }
 
         private void settings_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Please select a difficulty.");
+            easy.Enabled = true;
+            medium.Enabled = true;
+            hard.Enabled = true;
             easy.Visible = true;
             medium.Visible = true;
             hard.Visible = true;
@@ -243,6 +247,7 @@ namespace assessment
             label2.Visible = false;
             label3.Visible = false;
             label4.Visible = false;
+            label5.Visible = true;
             labelScore.Visible = false;
             labelLives.Visible = false;
             redeemButton.Visible = false;
@@ -263,6 +268,25 @@ namespace assessment
             easy.Visible = false;
             medium.Visible = false;
             hard.Visible = false;
+            label5.Visible = false;
+            back.Visible = false;
+            PnlGame.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            label4.Visible = true;
+            label5.Visible = false;
+            labelScore.Visible = true;
+            labelLives.Visible = true;
+            redeemButton.Visible = true;
+            redeemCode.Visible = true;
+            Start.Visible = true;
+            Instructions.Visible = true;
+            textName.Visible = true;
+            highScoreLbl.Visible = true;
+            back.Visible = false;
+            settings.Visible = true;
+            redeem.Visible = true;
         }
 
         private void medium_Click(object sender, EventArgs e)
@@ -272,7 +296,25 @@ namespace assessment
             easy.Visible = false;
             medium.Visible = false;
             hard.Visible = false;
-
+            label5.Visible = false;
+            back.Visible = false;
+            PnlGame.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            label4.Visible = true;
+            label5.Visible = false;
+            labelScore.Visible = true;
+            labelLives.Visible = true;
+            redeemButton.Visible = true;
+            redeemCode.Visible = true;
+            Start.Visible = true;
+            Instructions.Visible = true;
+            textName.Visible = true;
+            highScoreLbl.Visible = true;
+            back.Visible = false;
+            settings.Visible = true;
+            redeem.Visible = true;
         }
 
         private void hard_Click(object sender, EventArgs e)
@@ -282,7 +324,25 @@ namespace assessment
             easy.Visible = false;
             medium.Visible = false;
             hard.Visible = false;
-
+            label5.Visible = false;
+            back.Visible = false;
+            PnlGame.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            label4.Visible = true;
+            label5.Visible = false;
+            labelScore.Visible = true;
+            labelLives.Visible = true;
+            redeemButton.Visible = true;
+            redeemCode.Visible = true;
+            Start.Visible = true;
+            Instructions.Visible = true;
+            textName.Visible = true;
+            highScoreLbl.Visible = true;
+            back.Visible = false;
+            settings.Visible = true;
+            redeem.Visible = true;
         }
 
         private void textName_TextChanged(object sender, EventArgs e)
@@ -330,13 +390,33 @@ namespace assessment
             }
             else if(redeemCode.Text == "Matthew Is a God" || redeemCode.Text == "Matthew is a god" || redeemCode.Text == "MATTHEW IS A GOD" || redeemCode.Text == "matthew is a god")
             {
-                MessageBox.Show("You Legend! Have a free 100 points!");
-                scoreBoost = 100;                
+                MessageBox.Show("You Legend! Have a free 50 points!");
+                scoreBoost = 50;                
             }
             else if(redeemCode.Text == "1234567890")
             {
                 MessageBox.Show("Did you see my advert? Have a free 5 points!");
                 scoreBoost = 5;
+            }
+            else if (redeemCode.Text == "Combo Box" || redeemCode.Text == "combo box" || redeemCode.Text == "Combo box")
+            {
+                MessageBox.Show("COMBO BOX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                livesBoost = 3;
+            }
+            else if (redeemCode.Text == "Lmao" || redeemCode.Text == "lmao")
+            {
+                MessageBox.Show("LMAO");
+                scoreSetBack = 2;
+            }
+            else if (redeemCode.Text == "Dax" || redeemCode.Text == "Ryan")
+            {
+                MessageBox.Show("Is A God");
+                scoreBoost = 50;
+            }
+            else if (redeemCode.Text == "trololol" || redeemCode.Text == "TROLOLOL")
+            {
+                MessageBox.Show("t r o l o l o l");
+                scoreBoost = 1;
             }
         }
 

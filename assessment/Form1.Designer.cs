@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PnlGame = new System.Windows.Forms.Panel();
+            this.back = new System.Windows.Forms.Button();
             this.hard = new System.Windows.Forms.Button();
             this.medium = new System.Windows.Forms.Button();
             this.easy = new System.Windows.Forms.Button();
@@ -49,29 +50,35 @@
             this.redeemButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.highScoreLbl = new System.Windows.Forms.Label();
-            this.back = new System.Windows.Forms.Button();
-            this.PnlGame.SuspendLayout();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.settings)).BeginInit();
             this.SuspendLayout();
             // 
             // PnlGame
             // 
             this.PnlGame.BackColor = System.Drawing.Color.White;
-            this.PnlGame.Controls.Add(this.back);
-            this.PnlGame.Controls.Add(this.hard);
-            this.PnlGame.Controls.Add(this.medium);
-            this.PnlGame.Controls.Add(this.easy);
             this.PnlGame.Location = new System.Drawing.Point(12, 99);
             this.PnlGame.Name = "PnlGame";
             this.PnlGame.Size = new System.Drawing.Size(550, 450);
             this.PnlGame.TabIndex = 0;
             this.PnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGame_Paint);
             // 
+            // back
+            // 
+            this.back.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.back.Location = new System.Drawing.Point(662, 511);
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(100, 38);
+            this.back.TabIndex = 15;
+            this.back.Text = "Back";
+            this.back.UseVisualStyleBackColor = true;
+            this.back.Click += new System.EventHandler(this.back_Click);
+            // 
             // hard
             // 
             this.hard.BackColor = System.Drawing.Color.Silver;
             this.hard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hard.Location = new System.Drawing.Point(238, 252);
+            this.hard.Location = new System.Drawing.Point(568, 375);
             this.hard.Name = "hard";
             this.hard.Size = new System.Drawing.Size(183, 59);
             this.hard.TabIndex = 2;
@@ -83,7 +90,7 @@
             // 
             this.medium.BackColor = System.Drawing.Color.Silver;
             this.medium.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.medium.Location = new System.Drawing.Point(238, 150);
+            this.medium.Location = new System.Drawing.Point(568, 272);
             this.medium.Name = "medium";
             this.medium.Size = new System.Drawing.Size(183, 59);
             this.medium.TabIndex = 1;
@@ -95,7 +102,7 @@
             // 
             this.easy.BackColor = System.Drawing.Color.Silver;
             this.easy.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.easy.Location = new System.Drawing.Point(238, 45);
+            this.easy.Location = new System.Drawing.Point(568, 158);
             this.easy.Name = "easy";
             this.easy.Size = new System.Drawing.Size(183, 59);
             this.easy.TabIndex = 0;
@@ -254,16 +261,15 @@
             this.highScoreLbl.TabIndex = 14;
             this.highScoreLbl.Text = "0";
             // 
-            // back
+            // label5
             // 
-            this.back.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.back.Location = new System.Drawing.Point(344, 409);
-            this.back.Name = "back";
-            this.back.Size = new System.Drawing.Size(100, 38);
-            this.back.TabIndex = 15;
-            this.back.Text = "Back";
-            this.back.UseVisualStyleBackColor = true;
-            this.back.Click += new System.EventHandler(this.back_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(629, 86);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 25);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Difficulty";
             // 
             // Form1
             // 
@@ -271,9 +277,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.hard);
             this.Controls.Add(this.highScoreLbl);
+            this.Controls.Add(this.medium);
+            this.Controls.Add(this.easy);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.redeemButton);
+            this.Controls.Add(this.back);
             this.Controls.Add(this.redeemCode);
             this.Controls.Add(this.redeem);
             this.Controls.Add(this.labelLives);
@@ -293,7 +304,6 @@
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            this.PnlGame.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.settings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -323,6 +333,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label highScoreLbl;
         private System.Windows.Forms.Button back;
+        private System.Windows.Forms.Label label5;
     }
 }
 
