@@ -26,6 +26,7 @@ namespace assessment
         int scoreSetBack;
         int livesBoost;
         int scoreBoost;
+        int requiredScore = 70;
 
         bool left;
         bool right;
@@ -45,9 +46,13 @@ namespace assessment
 
         Random speed = new Random();
         Random loadingScreen = new Random();
+        Random coinSpawn = new Random();
+
+        int coinSpawnInt;
 
         Image robber = Image.FromFile(Application.StartupPath + @"\robber.png");
         Image cop = Image.FromFile(Application.StartupPath + @"\police.png");
+        Image coin = Image.FromFile(Application.StartupPath + @"\coin.jpg");
         int x2 = 350, y2 = 290; // starting position of robber
 
         public Form1()
@@ -118,6 +123,11 @@ namespace assessment
             {
                 g.DrawImage(cop, area[i]);
             }
+            // coins randomly spawning in
+
+            coinSpawnInt = coinSpawn.Next(50, 400);
+            //explain border of 50 - so it doesnt glitch at edge.
+            g.DrawImage(coin, coinSpawnInt);
         }
 
         private void TmrCop_Tick(object sender, EventArgs e)
@@ -133,29 +143,17 @@ namespace assessment
 
                     CheckLives(); //checks to see if the lives is 0
                 }
-                if (score > 20)
+                if (score > 10)
                 {
                     copSpeed[i] = speed.Next(5, 20);
                 }
-                if (score > 50)
+                if (score > 25)
                 {
                     copSpeed[i] = speed.Next(10, 35);
                 }
-                if (score > 100)
+                if (score > 50)
                 {
                     copSpeed[i] = speed.Next(25, 40);
-                }
-                if (score > 200)
-                {
-                    copSpeed[i] = speed.Next(40, 50);
-                }
-                if (score > 500)
-                {
-                    copSpeed[i] = speed.Next(50, 80);
-                }
-                if (score > 1000)
-                {
-                    copSpeed[i] = speed.Next(80, 100);
                 }
 
                 if (area[i].X > PnlGame.Width)
@@ -265,6 +263,7 @@ namespace assessment
         {
             difficulty = 3;
             MessageBox.Show("Difficulty set to Easy.");
+            requiredScore = 70;
             easy.Visible = false;
             medium.Visible = false;
             hard.Visible = false;
@@ -293,6 +292,7 @@ namespace assessment
         {
             difficulty = 2;
             MessageBox.Show("Difficulty set to Medium.");
+            requiredScore = 100;
             easy.Visible = false;
             medium.Visible = false;
             hard.Visible = false;
@@ -321,6 +321,7 @@ namespace assessment
         {
             difficulty = 1;
             MessageBox.Show("Difficulty set to Hard.");
+            requiredScore = 150;
             easy.Visible = false;
             medium.Visible = false;
             hard.Visible = false;
