@@ -27,6 +27,8 @@ namespace assessment
         int livesBoost;
         int scoreBoost;
         int requiredScore = 70;
+        int x3;
+        int y3;
 
         bool left;
         bool right;
@@ -41,8 +43,10 @@ namespace assessment
 
         Rectangle areaRobber;
         Rectangle[] area = new Rectangle[6];
+        Rectangle coinRectangle;
 
         int[] copSpeed = new int[6];
+        int coinSpeed = 20;
 
         Random speed = new Random();
         Random loadingScreen = new Random();
@@ -64,6 +68,9 @@ namespace assessment
                 area[i] = new Rectangle(x, y + 70 * i, 40, 40);
                 copSpeed[i] = speed.Next(1, 15);
             }
+            x3 = coinSpawn.Next(0, 450);
+            y3 = coinSpawn.Next(0, 550);
+            coinRectangle = new Rectangle(x3, y3, 75, 75);
             TmrRobber.Enabled = false;
             TmrCop.Enabled = false;
             easy.Visible = false;
@@ -123,11 +130,6 @@ namespace assessment
             {
                 g.DrawImage(cop, area[i]);
             }
-            // coins randomly spawning in
-
-            coinSpawnInt = coinSpawn.Next(50, 400);
-            //explain border of 50 - so it doesnt glitch at edge.
-            g.DrawImage(coin, coinSpawnInt);
         }
 
         private void TmrCop_Tick(object sender, EventArgs e)
@@ -201,12 +203,26 @@ namespace assessment
 
         void CheckScore()
         {
-            if(score == 70 || score > 70)
+            if (score == 70 || score > 70 && difficulty == 3) //checks if it is easy and player has met required score
+            {    
+                TmrCop.Enabled = false;
+                TmrRobber.Enabled = false;
+                TmrRobber.Enabled = false;
+                MessageBox.Show("Congratulations, you escaped the cops on Easy!" + "Next time, change the difficulty to make it harder!");
+            }
+            if (score == 100 || score > 100 && difficulty == 2) //checks if it is medium and player has met required score
             {
                 TmrCop.Enabled = false;
                 TmrRobber.Enabled = false;
                 TmrRobber.Enabled = false;
-                MessageBox.Show("Congratulations, you beat the game!" + "Next time, change the difficulty to make it harder!");
+                MessageBox.Show("Congratulations, you escaped the cops on Medium!" + "Next time, change the difficulty to make it harder!");
+            }
+            if (score == 150 || score > 150 && difficulty == 1) //checks if it is hard and player has met required score
+            {
+                TmrCop.Enabled = false;
+                TmrRobber.Enabled = false;
+                TmrRobber.Enabled = false;
+                MessageBox.Show("Congratulations, you escaped the cops on Hard!" + "Harder levels coming soon(well maybe)!");
             }
         }
 
