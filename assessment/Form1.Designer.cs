@@ -78,7 +78,7 @@
             // 
             this.hard.BackColor = System.Drawing.Color.Silver;
             this.hard.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hard.Location = new System.Drawing.Point(568, 375);
+            this.hard.Location = new System.Drawing.Point(568, 382);
             this.hard.Name = "hard";
             this.hard.Size = new System.Drawing.Size(183, 59);
             this.hard.TabIndex = 2;

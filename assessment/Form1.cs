@@ -56,7 +56,7 @@ namespace assessment
 
         Image robber = Image.FromFile(Application.StartupPath + @"\robber.png");
         Image cop = Image.FromFile(Application.StartupPath + @"\police.png");
-        Image coin = Image.FromFile(Application.StartupPath + @"\coin.jpg");
+       // Image coin = Image.FromFile(Application.StartupPath + @"\coin.jpg");
         int x2 = 350, y2 = 290; // starting position of robber
 
         public Form1()
@@ -198,6 +198,13 @@ namespace assessment
                     highScore = score;
                     highScoreLbl.Text = highScore.ToString();
                 }
+                Start.Enabled = true;
+                Instructions.Enabled = true;
+                redeemButton.Enabled = true;
+                redeemCode.Enabled = true;
+                textName.Enabled = true;
+
+                MessageBox.Show("Click the start button to start again!");
             }
         }
 
@@ -458,6 +465,7 @@ namespace assessment
             hard.Visible = false;
             back.Visible = false;
             settings.Visible = true;
+            label5.Visible = false;
         }
 
         private void TmrRobber_Tick(object sender, EventArgs e)
