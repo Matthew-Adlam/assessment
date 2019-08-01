@@ -252,6 +252,8 @@ namespace assessment
             labelLives.Text = lives.ToString();
             
             CheckLives();
+
+            //resets cops speed with variables controlling the speed
         }
 
         private void settings_Click(object sender, EventArgs e)
