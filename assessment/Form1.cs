@@ -13,6 +13,7 @@ namespace assessment
     public partial class Form1 : Form
     {
         // declares all I need
+
         Graphics g;
        
         int score = 0;
