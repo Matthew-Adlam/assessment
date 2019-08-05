@@ -51,13 +51,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.highScoreLbl = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.splashText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.settings)).BeginInit();
             this.SuspendLayout();
             // 
             // PnlGame
             // 
             this.PnlGame.BackColor = System.Drawing.Color.White;
-            this.PnlGame.Location = new System.Drawing.Point(12, 99);
+            this.PnlGame.Location = new System.Drawing.Point(12, 67);
             this.PnlGame.Name = "PnlGame";
             this.PnlGame.Size = new System.Drawing.Size(550, 450);
             this.PnlGame.TabIndex = 0;
@@ -136,7 +137,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(279, 13);
+            this.label1.Location = new System.Drawing.Point(279, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 2;
@@ -167,7 +168,7 @@
             // 
             // textName
             // 
-            this.textName.Location = new System.Drawing.Point(96, 54);
+            this.textName.Location = new System.Drawing.Point(96, 41);
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(100, 20);
             this.textName.TabIndex = 6;
@@ -177,7 +178,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(110, 13);
+            this.label2.Location = new System.Drawing.Point(113, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 20);
             this.label2.TabIndex = 7;
@@ -197,7 +198,7 @@
             // 
             this.labelScore.AutoSize = true;
             this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelScore.Location = new System.Drawing.Point(304, 54);
+            this.labelScore.Location = new System.Drawing.Point(304, 43);
             this.labelScore.Name = "labelScore";
             this.labelScore.Size = new System.Drawing.Size(16, 18);
             this.labelScore.TabIndex = 3;
@@ -207,7 +208,7 @@
             // 
             this.labelLives.AutoSize = true;
             this.labelLives.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLives.Location = new System.Drawing.Point(530, 56);
+            this.labelLives.Location = new System.Drawing.Point(527, 43);
             this.labelLives.Name = "labelLives";
             this.labelLives.Size = new System.Drawing.Size(16, 18);
             this.labelLives.TabIndex = 9;
@@ -255,7 +256,7 @@
             // 
             this.highScoreLbl.AutoSize = true;
             this.highScoreLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.highScoreLbl.Location = new System.Drawing.Point(417, 53);
+            this.highScoreLbl.Location = new System.Drawing.Point(417, 43);
             this.highScoreLbl.Name = "highScoreLbl";
             this.highScoreLbl.Size = new System.Drawing.Size(16, 18);
             this.highScoreLbl.TabIndex = 14;
@@ -271,12 +272,23 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Difficulty";
             // 
+            // splashText
+            // 
+            this.splashText.AutoSize = true;
+            this.splashText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.splashText.Location = new System.Drawing.Point(55, 527);
+            this.splashText.Name = "splashText";
+            this.splashText.Size = new System.Drawing.Size(47, 25);
+            this.splashText.TabIndex = 17;
+            this.splashText.Text = "text";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.splashText);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.hard);
             this.Controls.Add(this.highScoreLbl);
@@ -334,6 +346,7 @@
         private System.Windows.Forms.Label highScoreLbl;
         private System.Windows.Forms.Button back;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label splashText;
     }
 }
 

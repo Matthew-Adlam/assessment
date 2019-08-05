@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection; 
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -63,6 +64,9 @@ namespace assessment
         public Form1()
         {
             InitializeComponent();
+
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PnlGame, new object[] { true });
+
             areaRobber = new Rectangle(x2, y2, 75, 75);
             for (int i = 0; i < 6; i++)
             {
@@ -79,6 +83,7 @@ namespace assessment
             hard.Visible = false;
             back.Visible = false;
             label5.Visible = false;
+            splashText.Text = "Welcome to Cop Escape v0.1...";
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -143,6 +148,10 @@ namespace assessment
                     area[i].X = 20;
                     lives -= 1; // reduce lives by 1
                     labelLives.Text = lives.ToString();
+                    if (lives != 0)
+                    {
+                        splashText.Text = "You only just got away this time";
+                    }
 
                     CheckLives(); //checks to see if the lives is 0
                 }
@@ -164,7 +173,8 @@ namespace assessment
                     area[i].X = 20;
                     score += 1; // add 1 to score
                     CheckScore();
-                 labelScore.Text = score.ToString();//display score on the form 
+                    splashText.Text = "Take that silly cop!";
+                    labelScore.Text = score.ToString();//display score on the form 
                 }
             }
             PnlGame.Invalidate();
@@ -176,6 +186,7 @@ namespace assessment
             MessageBox.Show("Use the arrow keys to move the robber, avoiding the cops. Hit one and you lose a life.");
             MessageBox.Show("If a robber gets to the right of the screen, you gain a point, but try not to lose all your lives!");
             MessageBox.Show("Cops have a large range, larger than their body, as they have hidden guns. Try to stay away from them!");
+            MessageBox.Show("Note: This game was not designed to offend anybody.");
         }
 
         private void Start_Click(object sender, EventArgs e)
@@ -192,8 +203,9 @@ namespace assessment
                 TmrRobber.Enabled = false;
                 TmrRobber.Enabled = false;
                 MessageBox.Show("Game Over, your score was " + ""+ score + "" + "!");
-                
-                if(score > highScore)
+                splashText.Text = "Noooooooooooooo";
+
+                if (score > highScore)
                 {
                     MessageBox.Show("Congratulations, you got a new high score of " + "" + score + "" + "!");
                     highScore = score;
@@ -254,6 +266,8 @@ namespace assessment
             
             CheckLives();
 
+            splashText.Text = "And the escape begins!";
+
             //resets cops speed with variables controlling the speed
         }
 
@@ -312,6 +326,7 @@ namespace assessment
             back.Visible = false;
             settings.Visible = true;
             redeem.Visible = true;
+            splashText.Text = "Taking the easy escape?";
         }
 
         private void medium_Click(object sender, EventArgs e)
@@ -341,6 +356,7 @@ namespace assessment
             back.Visible = false;
             settings.Visible = true;
             redeem.Visible = true;
+            splashText.Text = "Nice medium. Not too hard, not too easy.";
         }
 
         private void hard_Click(object sender, EventArgs e)
@@ -370,6 +386,7 @@ namespace assessment
             back.Visible = false;
             settings.Visible = true;
             redeem.Visible = true;
+            splashText.Text = "Up for a challenge?";
         }
 
         private void textName_TextChanged(object sender, EventArgs e)
