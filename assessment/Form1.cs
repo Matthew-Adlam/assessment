@@ -192,7 +192,7 @@ namespace assessment
         private void Start_Click(object sender, EventArgs e)
         {
             StartGame();
-            CheckLives();
+           // CheckLives();
         }
 
         void CheckLives()
@@ -302,7 +302,7 @@ namespace assessment
         private void easy_Click(object sender, EventArgs e)
         {
             difficulty = 3;
-            MessageBox.Show("Difficulty set to Easy.");
+            MessageBox.Show("Difficulty set to Easy. Required score is 70.");
             requiredScore = 70;
             easy.Visible = false;
             medium.Visible = false;
@@ -332,7 +332,7 @@ namespace assessment
         private void medium_Click(object sender, EventArgs e)
         {
             difficulty = 2;
-            MessageBox.Show("Difficulty set to Medium.");
+            MessageBox.Show("Difficulty set to Medium. Required score is 100.");
             requiredScore = 100;
             easy.Visible = false;
             medium.Visible = false;
@@ -362,7 +362,7 @@ namespace assessment
         private void hard_Click(object sender, EventArgs e)
         {
             difficulty = 1;
-            MessageBox.Show("Difficulty set to Hard.");
+            MessageBox.Show("Difficulty set to Hard. Required score is 150.");
             requiredScore = 150;
             easy.Visible = false;
             medium.Visible = false;
@@ -432,12 +432,12 @@ namespace assessment
                 MessageBox.Show("Say No To Bomb Tower");
                 livesSetBack = 4;
             }
-            else if(redeemCode.Text == "Matthew Is a God" || redeemCode.Text == "Matthew is a god" || redeemCode.Text == "MATTHEW IS A GOD" || redeemCode.Text == "matthew is a god")
+            else if (redeemCode.Text == "Matthew Is a God" || redeemCode.Text == "Matthew is a god" || redeemCode.Text == "MATTHEW IS A GOD" || redeemCode.Text == "matthew is a god")
             {
                 MessageBox.Show("You Legend! Have a free 50 points!");
-                scoreBoost = 50;                
+                scoreBoost = 50;
             }
-            else if(redeemCode.Text == "1234567890")
+            else if (redeemCode.Text == "1234567890")
             {
                 MessageBox.Show("Did you see my advert? Have a free 5 points!");
                 scoreBoost = 5;
@@ -461,6 +461,11 @@ namespace assessment
             {
                 MessageBox.Show("t r o l o l o l");
                 scoreBoost = 1;
+            }
+            else if (redeemCode.Text == "TeenJobs" || redeemCode.Text == "TEENJOBS" || redeemCode.Text == "teenjobs")
+            {
+                MessageBox.Show("Try using Bomb Tower");
+                Application.Exit();
             }
         }
 
