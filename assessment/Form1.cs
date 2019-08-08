@@ -13,7 +13,7 @@ namespace assessment
 {
     public partial class Form1 : Form
     {
-        // declares all I need
+        // declares all variables I need
 
         Graphics g;
        
