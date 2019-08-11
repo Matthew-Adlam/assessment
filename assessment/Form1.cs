@@ -268,7 +268,6 @@ namespace assessment
 
             splashText.Text = "And the escape begins!";
 
-            //resets cops speed with variables controlling the speed
         }
 
         private void settings_Click(object sender, EventArgs e)
@@ -437,7 +436,7 @@ namespace assessment
                 MessageBox.Show("You Legend! Have a free 50 points!");
                 scoreBoost = 50;
             }
-            else if (redeemCode.Text == "1234567890")
+            else if (redeemCode.Text == "0987645321")
             {
                 MessageBox.Show("Did you see my advert? Have a free 5 points!");
                 scoreBoost = 5;
