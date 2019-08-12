@@ -217,7 +217,7 @@ namespace assessment
                 redeemCode.Enabled = true;
                 textName.Enabled = true;
 
-                MessageBox.Show("Click the start button to start again!");
+   //             MessageBox.Show("Click the start button to start again!");
             }
         }
 
