@@ -65,7 +65,11 @@ namespace assessment
         {
             InitializeComponent();
 
+            //double buffers
+
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PnlGame, new object[] { true });
+
+            // declares the rectangles for robber and cops
 
             areaRobber = new Rectangle(x2, y2, 75, 75);
             for (int i = 0; i < 6; i++)
@@ -73,6 +77,8 @@ namespace assessment
                 area[i] = new Rectangle(x, y + 70 * i, 40, 40);
                 copSpeed[i] = speed.Next(1, 15);
             }
+            // defaults for the start - nothing moving etc.
+
             x3 = coinSpawn.Next(0, 450);
             y3 = coinSpawn.Next(0, 550);
             coinRectangle = new Rectangle(x3, y3, 75, 75);
@@ -85,6 +91,8 @@ namespace assessment
             label5.Visible = false;
             splashText.Text = "Welcome to Cop Escape v0.1...";
         }
+
+        // when key pressed
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -106,6 +114,8 @@ namespace assessment
             }
         }
 
+        // when key released
+
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left)
@@ -126,6 +136,8 @@ namespace assessment
             }
         }
 
+        // 'paints' the robber and cops as per their rectangles
+
         private void PnlGame_Paint(object sender, PaintEventArgs e)
         {
             g = e.Graphics;
@@ -138,11 +150,16 @@ namespace assessment
             }
         }
 
+        // Timer for cops - movement
+
         private void TmrCop_Tick(object sender, EventArgs e)
         {
             for (int i = 0; i <= 5; i++)
             {
                 area[i].X += copSpeed[i];
+
+                // collision between robber and cops
+
                 if (area[i].IntersectsWith(areaRobber))
                 {
                     area[i].X = 20;
@@ -155,6 +172,7 @@ namespace assessment
 
                     CheckLives(); //checks to see if the lives is 0
                 }
+                // makes game harder as you progress
                 if (score > 10)
                 {
                     copSpeed[i] = speed.Next(5, 20);
@@ -167,6 +185,8 @@ namespace assessment
                 {
                     copSpeed[i] = speed.Next(25, 40);
                 }
+                
+                // if cops reach end of screen - 'escaped'
 
                 if (area[i].X > PnlGame.Width)
                 {
