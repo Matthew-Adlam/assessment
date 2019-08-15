@@ -24,10 +24,10 @@ namespace assessment
         int y = 20;
         int difficulty = 3; // 3 easy, 2 medium, 1 hard
         int loadingInt;
-        int livesSetBack;
-        int scoreSetBack;
-        int livesBoost;
-        int scoreBoost;
+        int livesSetBack = 0;
+        int scoreSetBack = 0;
+        int livesBoost = 0;
+        int scoreBoost = 0;
         int requiredScore = 70;
         int x3;
         int y3;
@@ -65,7 +65,7 @@ namespace assessment
         {
             InitializeComponent();
 
-            //double buffers
+            //double buffers - makes sure the cops and robber don't flicker
 
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PnlGame, new object[] { true });
 
@@ -200,6 +200,8 @@ namespace assessment
             PnlGame.Invalidate();
         }
 
+        // Instructions
+
         private void Instructions_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Click start to start. Before you do, redeem a code with the redeemer or change your game settings in the Settings menu, and enter a username.");
@@ -211,20 +213,24 @@ namespace assessment
 
         private void Start_Click(object sender, EventArgs e)
         {
+            // Starts the game...
             StartGame();
            // CheckLives();
         }
 
+        // Function to check if the lives count is 0 or less(because of bad codes)
         void CheckLives()
         {
             if(lives == 0 || lives < 0)
             {
+                // Stops everything
                 TmrCop.Enabled = false;
                 TmrRobber.Enabled = false;
                 TmrRobber.Enabled = false;
                 MessageBox.Show("Game Over, your score was " + ""+ score + "" + "!");
                 splashText.Text = "Noooooooooooooo";
-
+                
+                // Checks if score is greater than the current high score
                 if (score > highScore)
                 {
                     MessageBox.Show("Congratulations, you got a new high score of " + "" + score + "" + "!");
@@ -237,7 +243,7 @@ namespace assessment
                 redeemCode.Enabled = true;
                 textName.Enabled = true;
 
-   //             MessageBox.Show("Click the start button to start again!");
+                // MessageBox.Show("Click the start button to start again!");
             }
         }
 
@@ -292,6 +298,7 @@ namespace assessment
 
         private void settings_Click(object sender, EventArgs e)
         {
+            // clears screen and shows only the buttons for the difficulty selection
             MessageBox.Show("Please select a difficulty.");
             easy.Enabled = true;
             medium.Enabled = true;
@@ -319,7 +326,8 @@ namespace assessment
         }
 
         private void easy_Click(object sender, EventArgs e)
-        {
+        {      
+            // when easy clicked reset screen back to normal one
             difficulty = 3;
             MessageBox.Show("Difficulty set to Easy. Required score is 70.");
             requiredScore = 70;
@@ -350,6 +358,7 @@ namespace assessment
 
         private void medium_Click(object sender, EventArgs e)
         {
+            // when medium clicked reset screen back to normal one
             difficulty = 2;
             MessageBox.Show("Difficulty set to Medium. Required score is 100.");
             requiredScore = 100;
@@ -380,7 +389,7 @@ namespace assessment
 
         private void hard_Click(object sender, EventArgs e)
         {
-            difficulty = 1;
+            // when hard clicked reset screen back to normal one
             MessageBox.Show("Difficulty set to Hard. Required score is 150.");
             requiredScore = 150;
             easy.Visible = false;
@@ -445,7 +454,7 @@ namespace assessment
 
         private void redeemButton_Click(object sender, EventArgs e)
         {
-            // codes check if it is entered correctly
+            // codes check if it is entered correctly and show message and have an effect
             if (redeemCode.Text == "Bomb Tower")
             {
                 MessageBox.Show("Say No To Bomb Tower");
@@ -487,7 +496,7 @@ namespace assessment
                 Application.Exit();
             }
         }
-
+        // when back button clicked
         private void back_Click(object sender, EventArgs e)
         {
             PnlGame.Visible = true;
@@ -512,13 +521,14 @@ namespace assessment
             label5.Visible = false;
         }
 
+        // on robber movement
         private void TmrRobber_Tick(object sender, EventArgs e)
         {
-            if (left) // if left arrow pressed
+            if (left) // if left key pressed - moves robber unless it would go off screen
             {
-                if (areaRobber.X < 10) //check to see if spaceship within 10 of left side
+                if (areaRobber.X < 10) 
                 {
-                    areaRobber.X = 10; //if it is < 10 away "bounce" it (set position at 10)
+                    areaRobber.X = 10; 
                 }
                 else
                 {
@@ -526,9 +536,9 @@ namespace assessment
                 }
                 PnlGame.Invalidate();
             }
-            if (right) // if right arrow key pressed
+            if (right) 
             {
-                if (areaRobber.X > PnlGame.Width - 80)// is spaceship within 40 of right side
+                if (areaRobber.X > PnlGame.Width - 80)
                 {
                     areaRobber.X = PnlGame.Width - 80;
                 }
