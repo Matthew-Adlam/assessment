@@ -22,7 +22,7 @@ namespace assessment
         int highScore = 0;
         int x = 20;
         int y = 20;
-        int difficulty = 3; // 3 easy, 2 medium, 1 hard
+        int difficulty = 3; // 3 easy, 2 medium, 1 hard so it is easy by default
         int loadingInt;
         int livesSetBack = 0;
         int scoreSetBack = 0;
@@ -65,7 +65,7 @@ namespace assessment
         {
             InitializeComponent();
 
-            //double buffers - makes sure the cops and robber don't flicker
+            //double buffers - makes sure the cops and robber don't flicker upon movement
 
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PnlGame, new object[] { true });
 
@@ -277,7 +277,7 @@ namespace assessment
             TmrCop.Enabled = true;
             TmrRobber.Enabled = true;
 
-            //makes the arrow keys work
+            //makes the arrow keys work by disabling stuff I don't need
             Start.Enabled = false;
             Instructions.Enabled = false;
             textName.Enabled = false;
@@ -289,6 +289,7 @@ namespace assessment
 
             labelScore.Text = score.ToString();
             labelLives.Text = lives.ToString();
+            // makes the labels appear
             
             CheckLives();
 
@@ -443,6 +444,7 @@ namespace assessment
             }
             else
             {
+                // enables everything
                 Start.Enabled = true;
                 Instructions.Enabled = true;
                 redeemCode.Enabled = true;
@@ -526,7 +528,7 @@ namespace assessment
         {
             if (left) // if left key pressed - moves robber unless it would go off screen
             {
-                if (areaRobber.X < 10) 
+                if (areaRobber.X < 10) // if robber would go off screen move it, otherwise move to the left
                 {
                     areaRobber.X = 10; 
                 }
@@ -534,11 +536,11 @@ namespace assessment
                 {
                     areaRobber.X -= 7; 
                 }
-                PnlGame.Invalidate();
+                PnlGame.Invalidate(); // invalidate the panel
             }
             if (right) 
             {
-                if (areaRobber.X > PnlGame.Width - 80)
+                if (areaRobber.X > PnlGame.Width - 80) // if robber would go off screen move it, otherwise move to the right
                 {
                     areaRobber.X = PnlGame.Width - 80;
                 }
@@ -546,12 +548,12 @@ namespace assessment
                 {
                     areaRobber.X += 7;
                 }
-                PnlGame.Invalidate();
+                PnlGame.Invalidate(); // invalidate the panel
             }
    
             if (up) 
             {
-                if (areaRobber.Y < PnlGame.Height - 430)
+                if (areaRobber.Y < PnlGame.Height - 430) // if robber would go off screen move it, otherwise move upwards
                 {
                     areaRobber.Y = PnlGame.Height - 430;
                 }
@@ -559,12 +561,12 @@ namespace assessment
                 {
                     areaRobber.Y -= 7;
                 }
-                PnlGame.Invalidate();
+                PnlGame.Invalidate(); // invalidate the panel
             }
          
             if (down)
             {
-                if (areaRobber.Y > PnlGame.Height - 80)
+                if (areaRobber.Y > PnlGame.Height - 80) // if robber would go off screen move it, otherwise move downwards
                 {
                     areaRobber.Y = PnlGame.Height - 80;
                 }
@@ -572,7 +574,7 @@ namespace assessment
                 {
                     areaRobber.Y += 7;
                 }
-                PnlGame.Invalidate();
+                PnlGame.Invalidate(); // invalidate the panel
             }
 
         }
