@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace assessment
 {
-    public partial class Form1 : Form
+    public partial class FrmAssessment : Form
     {
         // declares all variables I need
 
@@ -39,10 +39,6 @@ namespace assessment
 
         string name;
 
-        double idc;
-
-        float idk;
-
         Rectangle areaRobber;
         Rectangle[] area = new Rectangle[6];
         Rectangle coinRectangle;
@@ -61,7 +57,7 @@ namespace assessment
        // Image coin = Image.FromFile(Application.StartupPath + @"\coin.jpg");
         int x2 = 350, y2 = 290; // starting position of robber
 
-        public Form1()
+        public FrmAssessment()
         {
             InitializeComponent();
 
@@ -467,9 +463,9 @@ namespace assessment
                 MessageBox.Show("You Legend! Have a free 50 points!");
                 scoreBoost = 50;
             }
-            else if (redeemCode.Text == "0987645321")
+            else if (redeemCode.Text == "Hello User")
             {
-                MessageBox.Show("Did you see my advert? Have a free 5 points!");
+                MessageBox.Show("That is right! Have 5 points!");
                 scoreBoost = 5;
             }
             else if (redeemCode.Text == "Combo Box" || redeemCode.Text == "combo box" || redeemCode.Text == "Combo box")

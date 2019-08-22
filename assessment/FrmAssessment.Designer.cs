@@ -1,6 +1,6 @@
 ﻿namespace assessment
 {
-    partial class Form1
+    partial class FrmAssessment
     {
         /// <summary>
         /// Required designer variable.
