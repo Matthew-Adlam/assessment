@@ -182,7 +182,7 @@ namespace assessment
                     copSpeed[i] = speed.Next(25, 40);
                 }
                 
-                // if cops reach end of screen - 'escaped'
+                // if cops reach end of screen - 'you have escaped'
 
                 if (area[i].X > PnlGame.Width)
                 {
